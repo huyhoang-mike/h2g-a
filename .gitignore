@@ -1,3 +1,5 @@
 /.snakemake
 /networks
+__pycache__/
+/results
 gurobi.log
