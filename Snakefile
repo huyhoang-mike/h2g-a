@@ -11,3 +11,19 @@ rule retrieve_h2_networks:
         cd ..
         rm -r "SolvedH2"
         """
+
+rule retrieve_result_networks:
+    output:
+        results = directory("results/")
+    threads: 1
+    shell:
+        """
+        gdown --folder https://drive.google.com/drive/folders/1WeVS1ZiWYyndYQhuF_ORE7b57jhBqTbR
+        """
+
+rule prepare_postprocessing:
+    input:
+        results = directory("results/")
+    threads: 1
+    script:
+        "scripts/make_stats_dicts.py"
