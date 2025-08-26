@@ -41,7 +41,7 @@ scenario:
   ll: ["copt"]
   clusters: [10]
   opts: [
-    Co2L0.59, 
+    Co2L0.59 
     # Co2L0.24
     ] # Co2L0.24 TODO per country: adjust factor (e.g. Co2L0.8 for 2035) and co2base (see below) per country and planning_horizon based on excel file
   planning_horizons: # investment years for myopic and perfect; or costs year for overnight

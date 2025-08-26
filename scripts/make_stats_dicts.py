@@ -27,15 +27,26 @@ sdir = Path.cwd() / "results"/ f"{run_name_prefix}_summary_20250523"
 sdir.mkdir(exist_ok=True, parents=True)
 
 all_run_names = [
+    "H2G_A_CD_2035", 
+    "H2G_A_CD_2050", 
     "H2G_A_EG_2035", 
-    "H2G_A_EG_2050", 
+    "H2G_A_EG_2050",
+    "H2G_A_ET_2035",
+    "H2G_A_ET_2050",
+    "H2G_A_GH_2035", 
+    "H2G_A_GH_2050",
+    "H2G_A_KE_2035", 
+    "H2G_A_KE_2050",
+    "H2G_A_MA_2035", 
+    "H2G_A_MA_2050",
+    "H2G_A_NA_2035",
+    "H2G_A_NA_2050",
+    "H2G_A_NG_2035", 
+    "H2G_A_NG_2050", 
+    "H2G_A_TN_2035", 
+    "H2G_A_TN_2050",
     "H2G_A_ZA_2035", 
-    "H2G_A_ZA_2050",
-    "H2G_A_NG_2035",
-    # "H2G_A_NA", 
-    # "H2G_A_MA", 
-    # "H2G_A1_CD", "H2G_A1_NA", 
-               #"NA", "MA", "ZA", "KE", "ET", "CG", "TZ", "GH", "TN", "NG"
+    "H2G_A_ZA_2050",  
                ]
 
 #%%
@@ -127,7 +138,7 @@ mean_marginal_prices.columns.name = "bus" # NB: this is spatially resolved.
 for nc_files_idx in nc_files.index:
     
     n = pypsa.Network(nc_files.at[nc_files_idx,"file"])
-    n.statistics.set_parameters(nice_names=False, drop_zero=False, round=6)
+    #n.statistics.set_parameters(nice_names=False, drop_zero=False, round=6)
 
     ##### energy and mass market balance_dict per bus_carrier in TWh
 

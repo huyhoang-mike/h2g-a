@@ -47,7 +47,7 @@ scenario:
   sopts:
   - "3H"
   demand:
-  - "NZ"
+  - "AB"
 
 
 augmented_line_connection:
