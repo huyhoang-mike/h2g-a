@@ -2,4 +2,6 @@
 /networks
 __pycache__/
 /results
+/configs
 gurobi.log
+.postprocess_done
