@@ -1,0 +1,10 @@
+,run_name_prefix,scen,year,country,variable,value
+0,H2G_A,0.1MtH2export,2035,EG,H2 export bus,99.97970333190142
+8,H2G_A,0.1MtH2export,2035,NG,H2 export bus,110.19795917242116
+16,H2G_A,0.1MtH2export,2035,ZA,H2 export bus,99.24592727220907
+24,H2G_A,0.4MtH2export,2035,EG,H2 export bus,100.18672111778962
+32,H2G_A,0.4MtH2export,2035,NG,H2 export bus,110.36950883198216
+40,H2G_A,0.4MtH2export,2035,ZA,H2 export bus,99.46208337089264
+48,H2G_A,0.7MtH2export,2035,EG,H2 export bus,100.37919642738484
+56,H2G_A,0.7MtH2export,2035,NG,H2 export bus,110.47359105038112
+64,H2G_A,0.7MtH2export,2035,ZA,H2 export bus,99.77686120185218

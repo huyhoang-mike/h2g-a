@@ -1,7 +1,9 @@
 /.snakemake
 /networks
 __pycache__/
-/results
+/results/*
+!/results/marginal_prices_35.csv
+!/results/marginal_prices_50.csv
 /configs
 gurobi.log
 .postprocess_done
