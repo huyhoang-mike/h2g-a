@@ -40,3 +40,23 @@ This will automatically execute the prerequisite rule `retrieve_result_networks`
 ## Handling Errors
 
 The current framework for downloading network files is under development and may have connections/permissions issues. If you face them, just manually download the files using the link provided in the `Snakefile` and place them in the parent folder. The rest of the Snakemake workflow should work as expected.
+
+## Results - Dashboard
+
+The results are available via the following dashboard:
+
+https://h2export.streamlit.app/
+
+To run the dashboard on your local machine, open the terminal in the repository. Make sure you have a Streamlit-compatible environment.
+If you're working within the pypsa-earth environment, you'll need to install two additional packages first:
+```bash
+pip install streamlit
+```
+```bash
+pip install pyaml
+```
+
+Then, launch the dashboard with:
+```bash
+streamlit run app.py
+```
