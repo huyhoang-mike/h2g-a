@@ -1,0 +1,6 @@
+geopandas
+pip
+streamlit>=1.18
+pandas
+plotly
+pyaml
