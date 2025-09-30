@@ -4,20 +4,21 @@ rule retrieve_h2_networks:
     threads: 1
     shell:
         """
+        mkdir -p networks
         curl --progress-bar -X GET https://zenodo.org/records/16945007/files/solved_h2.zip?download=1 > networks/solved_h2.zip
         unzip networks/solved_h2.zip -d networks/
         rm -rf networks/solved_h2.zip
         """
 
-rule retrieve_results_networks:
+rule retrieve_AP2_results_networks:
     output:
-        results = directory("results/")
+        results = directory("results/AP2_pypsa_earth_results")
     threads: 1
     shell:
         """
-        curl --progress-bar -X GET https://zenodo.org/records/16945238/files/results.zip?download=1 > results.zip
-        unzip results.zip -d ./
-        rm -rf ./results.zip
+        curl --progress-bar -X GET https://zenodo.org/records/17129490/files/AP2_pypsa_earth_results.zip?download=1 > AP2_pypsa_earth_results.zip
+        unzip AP2_pypsa_earth_results.zip -d ./results
+        rm -rf ./AP2_pypsa_earth_results.zip
         """
 
 rule retrieve_configs:
@@ -36,7 +37,7 @@ rule retrieve_configs:
 
 rule prepare_postprocessing:
     input:
-        results = directory("results/"),
+        results = directory("results/AP2_pypsa_earth_results"),
         configs = directory("configs")
     output:
         touch("./.postprocess_done")
@@ -47,6 +48,4 @@ rule prepare_postprocessing:
 rule all:
     input:
         "networks/solved_h2",
-        "results/",
-        "./.postprocess_done",
-        "configs/"
+        "./.postprocess_done"
