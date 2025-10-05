@@ -37,9 +37,25 @@ snakemake -j 1 prepare_postprocessing
 ```
 This will automatically execute the prerequisite rule `retrieve_result_networks`. Once completed, you will have all the required data to analyze the `plot_marginal_prices.ipynb` and `plot_summary.ipynb` notebooks.
 
-## Handling Errors
+## ⚠️ Handling Download Errors
 
-The current framework for downloading network files is under development and may have connections/permissions issues. If you face them, just manually download the files using the link provided in the `Snakefile` and place them in the parent folder. The rest of the Snakemake workflow should work as expected.
+The current framework for downloading network files is still under development and may encounter connection or permission issues. If you experience such problems, you can manually download the required files using the instructions below. Once placed correctly, the rest of the Snakemake workflow should function as expected. 
+
+If you're familiar with Snakemake, you may also refer to the Snakefile for a deeper understanding of the workflow and file dependencies.
+
+### ✅ Solved Hydrogen Networks
+
+1. Download the `solved_h2.zip` file from this [link](https://zenodo.org/records/16945007).
+2. Extract the contents.
+3. Move the extracted `solved_h2` folder into the `networks/` directory.  
+    *(If the `networks/` directory does not exist, you may need to create it.)*
+
+### ✅ Post-Processing Results Networks
+
+1. Download the `.zip` file from this [link](https://zenodo.org/records/17129490).
+2. Extract the contents.
+3. Move the extracted `AP2_pypsa_earth_results` folder into the `results/` directory.
+    *(If the `results/` directory does not exist, you may need to create it.)*
 
 ## Results - Dashboard
 

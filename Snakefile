@@ -4,20 +4,24 @@ rule retrieve_h2_networks:
     threads: 1
     shell:
         """
+        mkdir -p networks
         curl --progress-bar -X GET https://zenodo.org/records/16945007/files/solved_h2.zip?download=1 > networks/solved_h2.zip
         unzip networks/solved_h2.zip -d networks/
         rm -rf networks/solved_h2.zip
         """
 
-rule retrieve_results_networks:
+rule retrieve_AP2_results_networks:
     output:
-        results = directory("results/")
+        touch(".AP2_results_done")
     threads: 1
     shell:
         """
-        curl --progress-bar -X GET https://zenodo.org/records/16945238/files/results.zip?download=1 > results.zip
-        unzip results.zip -d ./
-        rm -rf ./results.zip
+        set -e
+        mkdir -p results
+        curl -fL --progress-bar https://zenodo.org/records/17129490/files/AP2_pypsa_earth_results.zip?download=1 -o AP2_pypsa_earth_results.zip 
+        unzip -q AP2_pypsa_earth_results.zip -d results
+        mv results/AP2_pypsa_earth_results/* results/ || true
+        rm -rf AP2_pypsa_earth_results.zip results/AP2_pypsa_earth_results
         """
 
 rule retrieve_configs:
@@ -26,7 +30,7 @@ rule retrieve_configs:
     threads: 1
     shell:
         """
-        curl -fL https://github.com/doneachh/pypsa-earth/archive/refs/heads/h2g-a.zip -o "repo.zip"
+        curl -fL --progress-bar https://github.com/doneachh/pypsa-earth/archive/refs/heads/h2g-a.zip -o "repo.zip"
         unzip -q "./repo.zip" "pypsa-earth-h2g-a/configs/*" -d ./
         rm -rf ./repo.zip
         mkdir -p ./configs
@@ -36,10 +40,10 @@ rule retrieve_configs:
 
 rule prepare_postprocessing:
     input:
-        results = directory("results/"),
+        ".AP2_results_done",
         configs = directory("configs")
     output:
-        touch("./.postprocess_done")
+        touch(".postprocess_done")
     threads: 1
     script:
         "scripts/make_stats_dicts.py"
@@ -47,6 +51,5 @@ rule prepare_postprocessing:
 rule all:
     input:
         "networks/solved_h2",
-        "results/",
-        "./.postprocess_done",
-        "configs/"
+        ".AP2_results_done",
+        ".postprocess_done"
